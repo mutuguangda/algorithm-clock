@@ -18,16 +18,14 @@
  * @return {number[]}
  */
 var inorderTraversal = function(root) {
-  const res = []
-  if (root === null) return res
-  const helper = (root) => {
+  const helper = (root, res) => {
     if (root === null) return
-    helper(root.left)
+    helper(root.left, res)
     res.push(root.val)
-    helper(root.right)
+    helper(root.right, res)
+    return res
   }
-  helper(root)
-  return res
+  return helper(root, [])
 };
 // @lc code=end
 
